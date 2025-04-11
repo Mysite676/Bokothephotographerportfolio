@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boko the Photography - Capturing Zambia's Beauty</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a3e72; /* Deep blue like Zambian skies */
+            --secondary-color: #e9b949; /* Golden like Zambian sunsets */
+            --accent-color: #c53d3d; /* Red like Zambian soil */
+            --light-color: #f5f5f5;
+            --dark-color: #1a1a1a;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: var(--light-text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(26, 62, 114, 0.7), rgba(26, 62, 114, 0.7)), 
+                        url('photo1.jpg') no-repeat center center/cover;
+            color: var(--light-text);
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary-color);
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--secondary-color);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--light-text);
+            color: var(--light-text);
+        }
+
+        .btn-outline:hover {
+            background: var(--light-text);
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: #f9f9f9;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(233, 185, 73, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+            color: var(--dark-color);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay h3 {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Slideshow Section - Updated for Portrait Images */
+        .slideshow-section {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 5rem 0;
+        }
+
+        .slideshow-container {
+            max-width: 600px; /* Narrower container for portrait images */
+            position: relative;
+            margin: auto;
+            height: 800px; /* Taller for portrait images */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: opacity 1s ease-in-out;
+            background-color: #000; /* Black background for portrait images */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Show full portrait images without cropping */
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .slide-caption h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        .slide-nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .slide-dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .slide-dot.active, .slide-dot:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -30px;
+            padding: 16px;
+            color: var(--light-text);
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Featured Work Section - Updated for better mobile display */
+        .featured-work {
+            background-color: var(--light-color);
+            padding: 5rem 0;
+        }
+
+        .featured-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            transition: transform 0.3s;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .featured-img {
+            height: 250px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .featured-card:hover .featured-img img {
+            transform: scale(1.1);
+        }
+
+        .featured-content {
+            padding: 1.5rem;
+        }
+
+        .featured-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .featured-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .featured-link {
+            display: inline-block;
+            color: var(--secondary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .featured-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--light-text);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--light-text);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-color);
+            color: var(--light-text);
+            transform: translateY(-5px);
+        }
+
+        /* Image Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            object-fit: contain;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+
+        .modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        /* Zambian Flag Colors */
+        .zambian-flag {
+            display: flex;
+            height: 10px;
+            margin-bottom: 1rem;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .flag-green {
+            background-color: #198a00;
+            flex: 1;
+        }
+
+        .flag-red {
+            background-color: #c53d3d;
+            flex: 1;
+        }
+
+        .flag-black {
+            background-color: #000;
+            flex: 1;
+        }
+
+        .flag-orange {
+            background-color: #ff8c00;
+            flex: 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 500px;
+                background-attachment: scroll;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                max-width: 250px;
+                margin: 0.5rem auto;
+            }
+
+            .about-image img {
+                max-width: 100%;
+            }
+
+            .slideshow-container {
+                height: 600px;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+
+            /* Featured Work adjustments for mobile */
+            .featured-img {
+                height: 200px;
+            }
+
+            .featured-card {
+                max-width: 100%;
+            }
+
+            /* Mobile Navigation */
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+                color: var(--light-text);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 400px;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .slideshow-container {
+                height: 400px;
+            }
+
+            .modal-caption {
+                font-size: 1rem;
+            }
+
+            /* Featured Work adjustments for small mobile */
+            .featured-img {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content {
+                padding: 10px;
+            }
+
+            /* Featured Work adjustments for very small screens */
+            .featured-img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Boko <span>Photography</span></a>
+            
+            <!-- Navigation Menu -->
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="#featured" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="zambian-flag">
+                    <div class="flag-green"></div>
+                    <div class="flag-red"></div>
+                    <div class="flag-black"></div>
+                    <div class="flag-orange"></div>
+                </div>
+                <h1>Boko The photographer</h1>
+                <p>See the world's beauty through the lens of Boko the Photographer.</p>
+                <div>
+                    <a href="#gallery" class="btn">View Gallery</a>
+                    <a href="#contact" class="btn btn-outline">Book a Session</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Boko</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Zambian Photographer with a Passion for Storytelling</h3>
+                    <p>Born and raised in Lusaka, Boko has been capturing life's special moments for over 4 years. With a deep passion for storytelling through the lens, Boko brings every photo and video to life with heart and detail</p>
+                    <p>He specializes in wedding videography, advert shoots, and beautiful family portraits. Whether it's the joy of a wedding day, a powerful advert for your business, or a fun family shoot—Boko knows how to make every moment feel timeless.</p>
+                    <p>Known for his friendly approach and creative eye, Boko works closely with clients to bring their vision to life. Every shot is more than just a picture—it's a memory captured forever.</p>
+                <p> Let Boko the Photographer turn your moments into lasting stories.</p>
+                </div>
+                <div class="about-image">
+                    <img src="photo2.jpg" alt="Boko the Photographer">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be loaded dynamically from JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slideshow Section -->
+    <section class="section slideshow-section" id="slideshow">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--light-text);">Portrait Collections</h2>
+            </div>
+            <div class="slideshow-container" id="slideshow">
+                <div class="slide active">
+                    <img src="photo3.jpg" alt="Portrait Photography">
+                    <div class="slide-caption">
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo4.jpg" alt="Portrait Photography">
+                    <div class="slide-caption">
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo5.jpg" alt="Portrait Photography">
+                    <div class="slide-caption">
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo6.jpg" alt="Portrait Photography">
+                    <div class="slide-caption">
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="photo7.jpg" alt="Portrait Photography">
+                    <div class="slide-caption">
+                        <h3></h3>
+                    </div>
+                </div>
+            
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div class="slide-nav">
+                <span class="slide-dot active" onclick="currentSlide(1)"></span>
+                <span class="slide-dot" onclick="currentSlide(2)"></span>
+                <span class="slide-dot" onclick="currentSlide(3)"></span>
+                <span class="slide-dot" onclick="currentSlide(4)"></span>
+                <span class="slide-dot" onclick="currentSlide(5)"></span>
+                <span class="slide-dot" onclick="currentSlide(6)"></span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Work Section - Updated with different pictures -->
+    <section class="section featured-work" id="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="featured-container">
+                <div class="featured-card">
+                    <div class="featured-img">
+                        <img src="featured1.jpg" alt="Wedding Photography">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Love in Frame</h3>
+                        <p>Specializing in heartfelt wedding photography that beautifully documents your love story, from the first kiss to the last dance.</p>
+                        <a href="#" class="featured-link">View Project →</a>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-img">
+                        <img src="featured2.jpg" alt="Portrait Photography">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Through Shared Eyes</h3>
+                        <p>An intimate look at the bonds of friendship and community in Lusaka.</p>
+                        <a href="#" class="featured-link">View Project →</a>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-img">
+                        <img src="featured3.jpg" alt="Event Photography">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Taste. Tradition. Togetherness</h3>
+                        <p>Celebrating Zambian culinary traditions and the hands that preserve them - from kitchen to community.</p>
+                        <a href="#" class="featured-link">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Create Something Beautiful</h3>
+                    <p>Ready to capture your special moments or discuss a photography project? Contact me today to schedule a consultation.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Studio Location</h4>
+                                <p>Lusaka, Mtendere East</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+260 777 556 135</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>bokomwale604@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>Monday - Saturday: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formspree.io/f/bokomwale604@gmail.com" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">Boko <span>Photography</span></a>
+                <p>Capturing the heart and soul of Zambia through photography.</p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1Ae3zkn5rw/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/260777556135" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                
+                <p class="copyright">&copy; <span id="year"></span> Boko Photography. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+
+    <script>
+        // Sample gallery data
+        const galleryItems = [
+            {
+                title: "Click to view",
+                image: "photo3.jpg",
+            },
+            {
+                title: "Click to view",
+                image: "photo4.jpg",
+            },
+            {
+                title: "Click to view",
+                image: "photo5.jpg",
+            },
+            {
+                title: "Click to view",
+                image: "photo6.jpg",
+            },
+            {
+                title: "Click to view",
+                image: "photo7.jpg",
+            },
+            {
+                title: "Click to view",
+                image: "photo8.jpg",
+            },
+            {
+                title: "Click to view",
+                image: "photo9.jpg",
+            },
+            {
+                title: "Click to view",
+                image: "photo10.jpg",
+            }
+        ];
+
+        // Slideshow variables
+        let slideIndex = 1;
+        let slideInterval;
+
+        // DOM Elements
+        const galleryGrid = document.getElementById('galleryGrid');
+        const contactForm = document.getElementById('contactForm');
+        const yearSpan = document.getElementById('year');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.getElementsByClassName('close-modal')[0];
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderGallery();
+            showSlides(slideIndex);
+            startSlideShow();
+            
+            // Set current year in footer
+            yearSpan.textContent = new Date().getFullYear();
+        });
+
+        // Mobile menu toggle
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Render gallery items
+        function renderGallery() {
+            galleryGrid.innerHTML = '';
+            
+            galleryItems.forEach(item => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>${item.title}</h3>
+                    </div>
+                `;
+                galleryGrid.appendChild(galleryItem);
+            });
+
+            // Add click event to gallery items
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    const imgAlt = this.querySelector('img').alt;
+                    const caption = this.querySelector('h3').textContent;
+                    
+                    modal.style.display = "block";
+                    modalImg.src = imgSrc;
+                    modalImg.alt = imgAlt;
+                    modalCaption.innerHTML = caption;
+                });
+            });
+        }
+
+        // Close modal when clicking the X
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Slideshow functions
+        function startSlideShow() {
+            slideInterval = setInterval(() => {
+                plusSlides(1);
+            }, 5000);
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+            resetInterval();
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startSlideShow();
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("slide-dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+
+        // Contact form submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Submit the form using Formspree
+            fetch(this.action, {
+                method: this.method,
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Thank you for your message, Boko will contact you soon!');
+                    this.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                alert('There was a problem sending your message. Please try again later or contact me directly at bokomwale604@gmail.com');
+                console.error('Error:', error);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+            
+            // Sticky header effect
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // Back to top button click handler
+        backToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
